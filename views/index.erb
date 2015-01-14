@@ -1,0 +1,31 @@
+<h1>Vehicles</h1>
+
+<h3>Add a vehicle here:</h3>
+
+<form action="/vehicle" method="post">
+  <label for="make">Vehicle's make:</label>
+  <input id="make" name="make" type="text" required>
+    <br>
+  <label for="model">Vehicle's model:</label>
+  <input id="model" name="model" type="text" required>
+    <br>
+  <label for="year">Vehicle's year:</label>
+  <input id="year" name="year" type="text" required>
+    <br>
+  <button type="submit" class="btn btn-success">Add Vehicle</button>
+    <br>
+</form>
+<form action="/" method="post">
+  <button type="submit" class="btn btn-danger">Clear Vehicle List</button>
+<form>
+
+
+<h3>Here are the vehicles on this lot: </h3>
+<ul>
+  <% if @vehicles == nil %>
+    <p>There are currently no vehicles stored</p>
+  <% else @vehicles.each() do |vehicle| %>
+    <li><a href="/vehicles/<%= vehicle.id() %>"><%= vehicle.model() %></a></li>
+  <% end %>
+  <% end %>
+</ul>
